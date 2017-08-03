@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{430A7458-994F-45E1-BC5E-2C9A26B3962D}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="CapitalOneInvestingCodingTest.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="TestSecurityUtilityProject.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="CapitalOneInvestingCodingTest">
+        <MSBuild Projects="CapitalOneInvestingCodingTest.dproj"/>
+    </Target>
+    <Target Name="CapitalOneInvestingCodingTest:Clean">
+        <MSBuild Projects="CapitalOneInvestingCodingTest.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="CapitalOneInvestingCodingTest:Make">
+        <MSBuild Projects="CapitalOneInvestingCodingTest.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TestSecurityUtilityProject">
+        <MSBuild Projects="TestSecurityUtilityProject.dproj"/>
+    </Target>
+    <Target Name="TestSecurityUtilityProject:Clean">
+        <MSBuild Projects="TestSecurityUtilityProject.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TestSecurityUtilityProject:Make">
+        <MSBuild Projects="TestSecurityUtilityProject.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="CapitalOneInvestingCodingTest;TestSecurityUtilityProject"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="CapitalOneInvestingCodingTest:Clean;TestSecurityUtilityProject:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="CapitalOneInvestingCodingTest:Make;TestSecurityUtilityProject:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
