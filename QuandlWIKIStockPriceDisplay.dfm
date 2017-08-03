@@ -1,7 +1,7 @@
-object Form2: TForm2
+object StockPriceStatisticsForm: TStockPriceStatisticsForm
   Left = 0
   Top = 0
-  Caption = 'Form2'
+  Caption = 'Stock Price Statistics'
   ClientHeight = 442
   ClientWidth = 563
   Color = clBtnFace

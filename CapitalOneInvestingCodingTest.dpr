@@ -2,7 +2,7 @@ program CapitalOneInvestingCodingTest;
 
 uses
   Vcl.Forms,
-  QuandlWIKIStockPriceDisplay in 'QuandlWIKIStockPriceDisplay.pas' {Form2},
+  QuandlWIKIStockPriceDisplay in 'QuandlWIKIStockPriceDisplay.pas' {StockPriceStatisticsForm},
   SecurityUtilityUnit in 'SecurityUtilityUnit.pas';
 
 {$R *.res}
@@ -10,6 +10,6 @@ uses
 begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TForm2, Form2);
+  Application.CreateForm(TStockPriceStatisticsForm, StockPriceStatisticsForm);
   Application.Run;
 end.

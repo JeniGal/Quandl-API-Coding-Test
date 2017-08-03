@@ -62,7 +62,7 @@ procedure TSecuritiesUtility.LoadFields(flds : Array of String);
 begin
     if SecuritiesData.Active or (SecuritiesData.FieldDefs.Count > 0) then begin
         SecuritiesData.Close;
-        SecuritiesData.FieldDefs.Clear;   //???what if fielddefs already exist? Best way to re-set?  What if dataset is active?
+        SecuritiesData.FieldDefs.Clear;
         end;
 
     fldTicker  := flds[0];
@@ -109,7 +109,7 @@ begin
     itemList := TStringList.Create;
     //init SecuritiesData with values from csvString
     for i := 1 to dataList.Count-1 do begin  //headers have already been loaded, skip them
-        SecuritiesData.Append;              //??? code option to load headers here from first row, if not yet done
+        SecuritiesData.Append;
         itemList.DelimitedText := dataList[i];
         for j := 0 to itemList.Count-1 do begin
             if SecuritiesData.FieldDefs[j].DataType = ftDate then begin
@@ -136,7 +136,7 @@ var
 
 begin
     if (not ds.Active) or (ds.RecordCount <= 0) then
-        raise Exception.Create('Cannot divide by zero.');     //???
+        raise Exception.Create('No data to calculate average.');
     sum := 0;
     ds.First;
     while not ds.Eof do begin
@@ -167,9 +167,9 @@ begin
     if SecuritiesData.Filtered then
         saveFilter := SecuritiesData.Filter;
     SecuritiesData.Filtered := False;
-    SecuritiesData.Filter := '(ticker='+QuotedStr(ticker)+')';
+    SecuritiesData.Filter := 'ticker='+QuotedStr(ticker);
     SecuritiesData.Filtered := True;
-
+    //Exit method of no data is found for requested ticker
     if (not SecuritiesData.Active) or (SecuritiesData.RecordCount <= 0) or
        (startDt > endDt) then begin
         Result := nil;
@@ -247,9 +247,9 @@ begin
     if SecuritiesData.Filtered then
         saveFilter := SecuritiesData.Filter;
     SecuritiesData.Filtered := False;
-    SecuritiesData.Filter := '(ticker='+QuotedStr(ticker)+')';
+    SecuritiesData.Filter := 'ticker='+QuotedStr(ticker);
     SecuritiesData.Filtered := True;
-
+    //Exit method of no data is found for requested ticker
     if (not SecuritiesData.Active) or (SecuritiesData.RecordCount <= 0) then begin
         Result := nil;
         exit;
@@ -317,7 +317,7 @@ begin
     SecuritiesData.Filtered := False;
     SecuritiesData.Filter := 'ticker='+QuotedStr(ticker);
     SecuritiesData.Filtered := True;
-
+    //Exit method of no data is found for requested ticker
     if (not SecuritiesData.Active) or (SecuritiesData.RecordCount <= 0) then begin
         Result := nil;
         exit;
@@ -348,7 +348,7 @@ begin
         SecuritiesData.Next;
         end;
 
-    //if no data was found within the month range requested, return nil
+    //if no data was found, return nil
     if Result.Count <= 0 then
         Result := nil;
     // re-attach the original filter
@@ -376,6 +376,7 @@ var
     tkrIx, lasti, maxi, i : integer;
     worstVal, worstIx, ix : integer;
 begin
+    //Exit method of no data is found for requested ticker
     if (not SecuritiesData.Active) or (SecuritiesData.RecordCount <= 0) then begin
         Result := nil;
         exit;
