@@ -8,7 +8,7 @@ uses
   System.SysUtils, System.Classes, Vcl.Forms, Vcl.Controls,
   System.Net.HttpClient, System.Net.HttpClientComponent,
   Vcl.StdCtrls, VCL.ComCtrls, System.Net.URLClient,
-  SecurityUtilityUnit, VCL.Dialogs, System.IOUtils;
+  SecurityUtilityUnit, VCL.Dialogs, System.IOUtils, MidasLib;
 
 type
   TStockPriceStatisticsForm = class(TForm)

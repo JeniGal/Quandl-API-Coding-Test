@@ -5,6 +5,7 @@ program TestSecurityUtilityProject;
 {$ENDIF}{$STRONGLINKTYPES ON}
 uses
   System.SysUtils,
+  MidasLib,
   {$IFDEF TESTINSIGHT}
   TestInsight.DUnitX,
   {$ENDIF }
