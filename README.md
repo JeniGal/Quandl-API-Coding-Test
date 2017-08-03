@@ -6,14 +6,16 @@ Choose the green Clone or Download button.
 Select Download Zip.  Extract all into default folder.
 
 REQUIREMENTS:
-A Delphi compiler is required to run the code.  
+Program written for a Win32 environment.
+
+A Delphi compiler is required to compile the code.  
 A free demo can be downloaded from :https://www.embarcadero.com/products/delphi
 Follow the compiler installation instructions.
 
-To compile the code, open CapitalOneInvestingCodingProject.groupproj from your Delphi compiler.
+Open CapitalOneInvestingCodingProject.groupproj from your Delphi compiler.
 Build and run each of the projects included in the group project.
 
-Internet connection is required to extract data from Quandl.
+Internet connection is required to extract data from Quandl.  Otherwise, the program will prompt you for a file which is located in your expanded zip folder.  The name of the file is WIKI-PRICES.csv.
 
 USER GUIDE:
 To run the program, double click CapitalOneInvestingCodingTest.exe.
